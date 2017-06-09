@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :pictures do
+    collection do
+      post :confirm
+    end
+  end
   devise_for :users
   root 'top#index'
 

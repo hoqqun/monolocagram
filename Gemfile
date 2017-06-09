@@ -48,3 +48,7 @@ gem 'devise'
 group :development do
   gem 'letter_opener_web'
 end
+gem 'carrierwave'
+gem 'rmagick'
+gem 'pry-rails'
+gem 'better_errors'
