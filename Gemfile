@@ -47,6 +47,7 @@ gem 'twitter-bootstrap-rails'
 gem 'devise'
 group :development do
   gem 'letter_opener_web'
+  gem 'dotenv-rails'
 end
 gem 'carrierwave'
 gem 'rmagick'
@@ -55,3 +56,6 @@ gem 'better_errors'
 gem 'rails_admin'
 gem 'cancan'
 gem 'rails_12factor' , group: :production
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
