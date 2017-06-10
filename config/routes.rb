@@ -5,10 +5,8 @@ Rails.application.routes.draw do
       post :confirm
     end
   end
-  devise_for :users, controllers: {
-    omniauth_callbacks: "users/omniauth_callbacks"
-  }
-  
+  devise_for :users
+
   root 'pictures#index'
 
   get 'things/index'
