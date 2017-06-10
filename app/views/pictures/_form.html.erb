@@ -20,7 +20,7 @@
 </div>
 
 <div class="field">
-  <%= image_tag @picture.picture.url if @picture.picture? %>
+  <%= image_tag @picture.picture if @picture.picture? %>
   <%= f.file_field :picture %>
   <%= f.hidden_field :picture_cache %>
 </div>
