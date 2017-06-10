@@ -54,3 +54,4 @@ gem 'pry-rails'
 gem 'better_errors'
 gem 'rails_admin'
 gem 'cancan'
+gem 'rails_12factor' , group: :production
