@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     omniauth_callbacks: "users/omniauth_callbacks"
   }
 
-  root 'pictures#index'
+  root 'top#index'
 
   get 'things/index'
 

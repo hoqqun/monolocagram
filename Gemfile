@@ -52,6 +52,7 @@ end
 gem 'carrierwave'
 gem 'rmagick'
 gem 'pry-rails'
+gem 'pry-byebug'
 gem 'better_errors'
 gem 'rails_admin'
 gem 'cancan'
