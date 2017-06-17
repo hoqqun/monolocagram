@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+    <h1>写真一覧</h1>
+      <%= link_to "投稿する", new_topic_path, class: 'btn btn-default' %>
+      <hr/>
+    <% @topics.each do |topic| %>
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <%= link_to topic_path(topic) do %>
+            <h2 class="panel-title"><strong>タイトル：<%= topic.title %></strong></h2>
+          <% end %>
+          <h4 class="panel-title"><small>投稿日：<%= topic.created_at.to_s %></small></h4>
+        </div>
+        <div class="panel-body">
+          <p><%= topic.text %></p>
+          <%= image_tag(topic.picture, alt: topic.title )%>
+        </div>
+        <div class="panel-footer">
+          <h4 class="panel-title">投稿者：<%= topic.user.name.present? ? topic.user.name : topic.user.email + " (名前を登録していないとメールアドレスを表示します。) " %></h4>        
+        </div>
+      </div>
+      <%= link_to "編集", edit_topic_path(topic.id), class: 'btn btn-default btn-sm btn-success' %>
+      <%= link_to "削除", topic_path(topic.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
+      <hr/>
+    <% end %>
+  </div>
+</div>
+

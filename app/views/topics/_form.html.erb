@@ -1,0 +1,33 @@
+<%= form_for(@topic, url: choose_new_or_edit, html: {multipart: true}) do |f| %>
+<% if @topic.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= @topic.errors.count %>件のエラーがあります。</h2>
+
+      <ul>
+      <% @topic.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+  </div>
+<% end %>
+
+<div class="field">
+  <%= f.text_field :title, class:'form-control', placeholder: "タイトル" %>
+</div>
+
+<div class="field">
+  <%= f.text_field :text, class:'form-control', placeholder: "内容" %>
+</div>
+
+<div class="field">
+  <%= image_tag @topic.picture if @topic.picture? %>
+  <%= f.file_field :picture %>
+  <%= f.hidden_field :picture_cache %>
+</div>
+
+<div class="actions">
+  <%= f.submit '投稿', class:'btn btn-primary btn-block' %>
+</div>
+<% end %>
+
+<%= link_to "投稿一覧画面にもどる", pictures_path %>
