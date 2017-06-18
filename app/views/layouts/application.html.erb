@@ -7,6 +7,21 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+  <% if notice %>
+    <script>
+      $(document).ready(function(){
+        alert("<%= notice %>")
+      });
+    </script>
+  <% elsif alert %>
+    <script>
+      $(document).ready(function(){
+        alert("<%= alert %>")
+      });
+    </script>
+  <% end %>
+
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
   <div class="container-fluid">
     <div class="navber-header page-scroll">
@@ -20,7 +35,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to 'みんなのおきにいり', topics_path if user_signed_in? %></li>
         <li><%= link_to 'ユーザー一覧', users_path if user_signed_in? %></li>
-        <li><%= link_to "メッセージ", conversations_path %></li>
+        <li><%= link_to "メッセージ", conversations_path if user_signed_in? %></li>
         <% if user_signed_in? %>
           <li><%= link_to 'マイページ', edit_user_registration_path %></li>
           <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
@@ -33,12 +48,6 @@
   </div>
 </nav>
 
-  <% if notice %>
-    <p class="notice"><%= notice %></p>
-  <% elsif alert %>
-    <p class="alert"><%= alert %></p>
-  <% end %>
-  
 <%= yield %>
 <hr>
 <!-- Footer -->
@@ -77,6 +86,5 @@
           </div>
       </div>
   </footer>
-
 </body>
 </html>

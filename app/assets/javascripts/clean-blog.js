@@ -38,3 +38,19 @@ jQuery(document).ready(function($) {
             });
     }
 });
+
+(function($) {
+    // 表示ボタンクリックでメッセージを表示
+    $('.notice').on('click', function() {
+        /*
+         * 1秒かけてメッセージを表示し、
+         * その後2秒間何もせず、
+         * その後2秒かけてメッセージを非表示にする
+         */
+        $('.notice').fadeIn(1000).delay(2000).fadeOut(2000);
+    });
+    // メッセージ内の×ボタンクリックでメッセージを非表示にする
+    $('.notice .close').on('click', function() {
+        $(this).parents('.alert').hide();
+    });
+})(jQuery);
