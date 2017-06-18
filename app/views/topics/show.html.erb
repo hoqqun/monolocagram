@@ -3,8 +3,9 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-heading">
-          <h1><%= @topic.title %></h1>
-          <span class="subheading"></span>
+          <h1>詳細</h1>
+          <hr class="small">
+          <span class="subheading"><%= @topic.title %></span>
           <span class="meta">投稿日 <%= @topic.created_at.strftime("%y/%m/%d %p %l:%M") %></span>
         </div>
       </div>

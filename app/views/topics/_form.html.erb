@@ -1,3 +1,5 @@
+
+
 <%= form_for(@topic, url: choose_new_or_edit, html: {multipart: true}) do |f| %>
 <% if @topic.errors.any? %>
   <div id="error_explanation">
@@ -21,13 +23,15 @@
 
 <div class="field">
   <%= image_tag @topic.picture if @topic.picture? %>
-  <%= f.file_field :picture %>
+  <%= f.file_field :picture, class: "btn btn-default" %>
   <%= f.hidden_field :picture_cache %>
 </div>
 
+<hr>
+
 <div class="actions">
-  <%= f.submit '投稿', class:'btn btn-primary btn-block' %>
+  <%= f.submit '投稿', class:'btn btn-default' %>
 </div>
 <% end %>
 
-<%= link_to "投稿一覧画面にもどる", pictures_path %>
+<%= link_to "投稿一覧画面にもどる", topics_path %>
