@@ -1,0 +1,29 @@
+<header class="intro-header" style="background-image:url(<%= asset_path "login-bg.jpg" %>)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-heading">
+          <h1>ユーザー 一覧</h1>
+          <hr class="small">
+          <span class="subheading"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <% @users.each do |user| %>
+      <div class="col-lg-4 col-sm-6 text-center">
+        <%= profile_img(user) %>
+        <h3><%= user.email %></h3>
+        <h3><small><%= user.name.present? ? user.name : "名無し" %></small></h3>
+        <div class="form-group">
+          <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post', class: "btn btn-default" %>
+        </div>
+        <%= render 'follow_form', user: user %>
+      </div>
+    <% end %>
+  </div>
+</div>

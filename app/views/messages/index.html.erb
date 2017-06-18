@@ -1,0 +1,50 @@
+<header class="intro-header" style="background-image:url(<%= asset_path "login-bg.jpg" %>)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-heading">
+          <h1>メッセージ</h1>
+          <hr class="small">
+          <span class="subheading"><%= @conversation.recipient.name %>さんとのメッセージ</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <% if @over_ten %>
+    <%= link_to '以前のメッセージ', '?m=all' %>
+  <% end %>
+
+  <div class="ui segment">
+    <% @messages.each do |message| %>
+      <% if message.body %>
+        <% user = User.find(message.user_id) %>
+        <div class="item">
+          <div class="content">
+            <div class="header"><strong><%= user.name %></strong> <%= message.message_time %></div>
+            <div class="list">
+              <div class="item">
+                <i class="right triangle icon"></i>
+                <%= message.body %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <hr>
+  <%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
+    <div class="field">
+      <%= f.text_area :body, class: "form-control" %>
+    </div>
+      <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+    <div>
+      <%= f.submit "メッセージを送る", class: "btn btn-default" %>
+    </div>
+
+  <% end %>
+</div>

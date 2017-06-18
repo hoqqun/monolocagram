@@ -1,4 +1,17 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
+
+  def edit
+    @comment = Comment.find(params[:id])
+  end
+
+  def update
+    @comment = Comment.find(params[:id])
+    @comment.update(comment_params)
+    
+    redirect_to topic_path(@comment.topic), notice: "ブログを編集しました！"
+  end
+
   def create
     # Topicをパラメータの値から探し出し,Topicに紐づくcommentsとしてbuildします。
     @comment = current_user.comments.build(comment_params)

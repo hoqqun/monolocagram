@@ -1,16 +1,31 @@
-<p id="notice"><%= notice %></p>
+<header class="intro-header" style="background-image:url(<%= asset_path "topic-bg.jpg" %>)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-heading">
+          <h1><%= @topic.title %></h1>
+          <span class="subheading"></span>
+          <span class="meta">投稿日 <%= @topic.created_at.strftime("%y/%m/%d %p %l:%M") %></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <a href="<%= @topic.picture %>" class="thumbnail">
+        <%= image_tag(@topic.picture, alt: @topic.title )%>
+      </a>
+      <p><%= @topic.text %></p>
+      <hr>
+    </div>
+  </div>
+</div>
+
 <div class="child row">
   <div class="wrapper col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
-    <div class="topic-text">
-      <p class="left"><strong>タイトル</strong></p>
-      <p class="left"><%= @topic.title %></p>
-      <p class="left"><strong>内容</strong></p>
-      <p class="left"><%= @topic.text %></p>
-      <p class="right">
-        <strong>作成時間:</strong>
-        <%= @topic.created_at.strftime("%y/%m/%d %p %l:%M") %>
-      </p>
-    </div>
     <p>コメント一覧</p>
     <div id="comments_area">
       <%= render partial: 'comments/index', locals: { comments: @comments, topic: @topic } %>
