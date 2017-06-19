@@ -1,19 +1,35 @@
-<%= form_for(@comment, url: topic_comment_path) do |f| %>
-  <% if @comment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= @comment.errors.count %>件のエラーがあります。</h2>
-      <ul>
-        <% @comment.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
+<header class="intro-header" style="background-image:url(<%= asset_path "topic-bg.jpg" %>)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-heading">
+          <h1>コメントの編集</h1>
+          <hr class="small">
+        </div>
+      </div>
     </div>
+  </div>
+</header>
+<div class="container">
+  <%= form_for(@comment, url: topic_comment_path) do |f| %>
+    <% if @comment.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= @comment.errors.count %>件のエラーがあります。</h2>
+        <ul>
+          <% @comment.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+      <div class="field">
+        <%= f.text_field :content, class:'form-control', placeholder: "コメント" , required: true%>
+      </div>
+      <div class="row">
+        <div class="form-group col-xs-12">
+          <%= f.submit '更新', class:'btn btn-default' %>
+        </div>
+      </div>
   <% end %>
-    <div class="field">
-      <%= f.text_field :content, class:'form-control', placeholder: "コメント" %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit '更新', class:'btn btn-primary btn-block' %>
-    </div>
-<% end %>
+  <%= link_to '戻る', topic_path(@topic) %>
+</div>

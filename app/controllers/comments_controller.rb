@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
 
   def edit
     @comment = Comment.find(params[:id])
+    @topic = @comment.topic
   end
 
   def update
