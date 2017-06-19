@@ -9,13 +9,14 @@ CarrierWave.configure do |config|
 
   config.fog_public     = true
   config.fog_attributes = {'Cache-Control' => 'public, max-age=86400'}
-
+  config.cache_storage = :fog
+  
   case Rails.env
     when 'production'
-      config.fog_directory = 'monolocagram-production-1'
-      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/monolocagram-production-1'
+      config.fog_directory = 'monolocagram-production'
+      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/monolocagram-production'
     when 'development'
-      config.fog_directory = 'monolocagram-development-1'
-      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/monolocagram-development-1'
+      config.fog_directory = 'monolocagram-development'
+      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/monolocagram-development'
   end
 end
